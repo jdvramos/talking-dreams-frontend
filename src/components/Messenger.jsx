@@ -340,7 +340,7 @@ const Messenger = () => {
     };
 
     useEffect(() => {
-        socket.current = io("ws://talking-dreams-socket.onrender.com/");
+        socket.current = io("wss://talking-dreams-socket.onrender.com/");
         // socket.current = io("ws://localhost:8001");
         // socket.current = io("ws://192.168.1.4:8001");
 
