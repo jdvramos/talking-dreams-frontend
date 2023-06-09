@@ -415,10 +415,18 @@ const ChatBox = ({
                                         <InputAdornment
                                             className="searchIcon"
                                             position="end"
+                                            sx={{
+                                                alignSelf: "flex-end",
+                                                height: "auto",
+                                            }}
                                         >
                                             <IconButton
                                                 size="medium"
-                                                sx={{ color: "#1976d2" }}
+                                                sx={{
+                                                    marginBottom: "-8px",
+                                                    marginTop: "-8px",
+                                                    color: "#1976d2",
+                                                }}
                                                 onClick={handleOpenEmojiMenu}
                                             >
                                                 <EmojiEmotionsIcon fontSize="inherit" />
