@@ -64,10 +64,7 @@ const CBSender = styled(Box)(({ theme }) => ({
 }));
 
 const ChatTextField = styled(TextField)(({ theme }) => ({
-    marginTop: "10px",
-    marginBottom: "10px",
-    marginLeft: "5px",
-    marginRight: "5px",
+    margin: "10px 5px",
     paddingRight: "0",
     "& .MuiInputBase-root": {
         paddingTop: "8px",
@@ -353,7 +350,11 @@ const ChatBox = ({
                             component={InputLabel}
                             aria-label="insert image"
                             size="medium"
-                            sx={{ color: "#1976d2" }}
+                            sx={{
+                                alignSelf: "flex-end",
+                                marginBottom: "10px",
+                                color: "#1976d2",
+                            }}
                             htmlFor="uploadImage"
                             onClick={handleUploadClick}
                         >
@@ -468,7 +469,11 @@ const ChatBox = ({
                             <IconButton
                                 aria-label="send message"
                                 size="medium"
-                                sx={{ color: "#1976d2" }}
+                                sx={{
+                                    alignSelf: "flex-end",
+                                    marginBottom: "10px",
+                                    color: "#1976d2",
+                                }}
                                 onClick={() =>
                                     imagePreview ? sendImage() : sendMessage()
                                 }
@@ -479,7 +484,11 @@ const ChatBox = ({
                             <IconButton
                                 aria-label="send like emoji"
                                 size="medium"
-                                sx={{ color: "#1976d2" }}
+                                sx={{
+                                    alignSelf: "flex-end",
+                                    marginBottom: "10px",
+                                    color: "#1976d2",
+                                }}
                                 onClick={() => sendMessage()}
                             >
                                 <ThumbUpIcon fontSize="inherit" />
