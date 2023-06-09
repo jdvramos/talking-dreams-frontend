@@ -24,6 +24,7 @@ function TabPanelReceived(props) {
         data,
         theme,
         isDarkMode,
+        isDisplayBelow425px,
         declineFriendRequest,
         acceptFriendRequest,
     } = props;
@@ -37,7 +38,7 @@ function TabPanelReceived(props) {
             flex={1}
             gap={2}
             sx={{
-                alignItems: "center",
+                alignItems: !isDisplayBelow425px && "center",
                 overflowY: "auto",
                 "&::-webkit-scrollbar": {
                     width: "6px",
@@ -59,14 +60,15 @@ function TabPanelReceived(props) {
                         gap={1}
                         key={person?.userData?._id}
                         mx={1}
+                        sx={{ width: !isDisplayBelow425px ? "250px" : "auto" }}
                     >
                         <Avatar
                             src={person?.userData?.userProfileImage}
                             alt={`${person?.userData?.firstName} ${person?.userData?.lastName}`}
                             sx={{
                                 alignSelf: "center",
-                                width: "70px",
-                                height: "70px",
+                                width: !isDisplayBelow425px ? "70px" : "65px",
+                                height: !isDisplayBelow425px ? "70px" : "65px",
                             }}
                         />
                         <Stack flex={1}>
@@ -89,11 +91,15 @@ function TabPanelReceived(props) {
                                     </Typography>
                                 </Stack>
                                 <Typography variant="caption">
-                                    {shortenText(16, person?.userData?.email)}
+                                    {shortenText(
+                                        isDisplayBelow425px ? 23 : 27,
+                                        person?.userData?.email
+                                    )}
                                 </Typography>
                             </Stack>
                             <Stack direction="row">
                                 <Button
+                                    fullWidth
                                     size="small"
                                     variant="contained"
                                     disableElevation
@@ -111,6 +117,7 @@ function TabPanelReceived(props) {
                                     Accept
                                 </Button>
                                 <Button
+                                    fullWidth
                                     size="small"
                                     variant="contained"
                                     disableElevation
@@ -192,21 +199,15 @@ function TabPanelSent(props) {
                         gap={1}
                         key={person?.userData?._id}
                         mx={1}
-                        sx={
-                            !isDisplayBelow425px
-                                ? {
-                                      width: "250px",
-                                  }
-                                : {}
-                        }
+                        sx={{ width: !isDisplayBelow425px ? "250px" : "auto" }}
                     >
                         <Avatar
                             src={person?.userData?.userProfileImage}
                             alt={`${person?.userData?.firstName} ${person?.userData?.lastName}`}
                             sx={{
                                 alignSelf: "center",
-                                width: "70px",
-                                height: "70px",
+                                width: !isDisplayBelow425px ? "70px" : "65px",
+                                height: !isDisplayBelow425px ? "70px" : "65px",
                             }}
                         />
                         <Stack flex={1}>
@@ -215,7 +216,6 @@ function TabPanelSent(props) {
                                     direction="row"
                                     justifyContent="space-between"
                                     alignItems="center"
-                                    flex={1}
                                 >
                                     <Typography
                                         fontWeight={500}
@@ -227,7 +227,6 @@ function TabPanelSent(props) {
                                         {formatMessageTime(person?.timeSent)}
                                     </Typography>
                                 </Stack>
-
                                 <Typography variant="caption">
                                     {shortenText(
                                         isDisplayBelow425px ? 23 : 27,
@@ -394,6 +393,7 @@ const ViewFriendsDialog = ({
                     data={friendRequestReceived}
                     theme={theme}
                     isDarkMode={isDarkMode}
+                    isDisplayBelow425px={isDisplayBelow425px}
                     declineFriendRequest={declineFriendRequest}
                     acceptFriendRequest={acceptFriendRequest}
                 />
