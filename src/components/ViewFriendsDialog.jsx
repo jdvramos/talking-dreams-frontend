@@ -328,7 +328,13 @@ const ViewFriendsDialog = ({
             }}
         >
             <DialogTitle sx={{ paddingLeft: "16px" }}>
-                Friends Requests
+                {`Friend Requests ${
+                    isDisplayBelow425px && value === 0
+                        ? "Received"
+                        : isDisplayBelow425px && value === 1
+                        ? "Sent"
+                        : ""
+                }`}
             </DialogTitle>
             <Box
                 flex={1}

@@ -56,7 +56,6 @@ const CBSender = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "60px",
     padding: "0 5px",
     borderWidth: 0,
     borderStyle: "solid",
@@ -65,14 +64,27 @@ const CBSender = styled(Box)(({ theme }) => ({
 }));
 
 const ChatTextField = styled(TextField)(({ theme }) => ({
+    marginTop: "10px",
+    marginBottom: "10px",
     marginLeft: "5px",
     marginRight: "5px",
     paddingRight: "0",
+    "& .MuiInputBase-root": {
+        paddingTop: "8px",
+        paddingBottom: "8px",
+    },
     "& .MuiInputBase-adornedEnd": {
         paddingRight: "0px",
     },
-    "& .MuiFilledInput-input": {
-        paddingTop: "8px",
+    "& textarea": {
+        maxHeight: "80px",
+        resize: "none",
+        overflowY: "auto",
+        scrollbarWidth: "none",
+        msOverflowStyle: "none",
+        "&::-webkit-scrollbar": {
+            display: "none",
+        },
     },
 }));
 
@@ -330,7 +342,7 @@ const ChatBox = ({
                     <CBSender
                         sx={{
                             height:
-                                imagePreview && validImage ? "80px" : "60px",
+                                imagePreview && validImage ? "80px" : "auto",
                             alignItems:
                                 imagePreview && validImage
                                     ? "flex-end"
@@ -446,6 +458,9 @@ const ChatBox = ({
                                     ),
                                     disableUnderline: true, // <== added this
                                 }}
+                                multiline
+                                minRows={1}
+                                maxRows={4}
                             ></ChatTextField>
                         )}
 

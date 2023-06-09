@@ -33,6 +33,7 @@ const MessageBubble = styled(Box)(({ theme }) => ({
     padding: "10px 15px",
     color: "#fff",
     borderRadius: "20px",
+    wordBreak: "break-word",
 }));
 
 const Messages = ({
