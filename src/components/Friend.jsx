@@ -174,6 +174,12 @@ const Friend = ({
                         <Typography
                             variant="caption"
                             fontSize="0.85rem"
+                            color={
+                                latestMessage?.status === "delivered" &&
+                                latestMessage?.senderId !== userId
+                                    ? "text.primary"
+                                    : "text.secondary"
+                            }
                             fontWeight={
                                 latestMessage?.status === "delivered" &&
                                 latestMessage?.senderId !== userId
